@@ -1,1 +1,48 @@
+import java.util.ArrayList;
 
+public class Inventory {
+    private final ArrayList<StockItem> stock;
+
+    public Inventory() {
+        stock = new ArrayList<>();
+    }
+
+    public void addStockItem(StockItem item) {
+        stock.add(item);
+    }
+
+    public int size() {
+        return stock.size();
+    }
+
+    @Override
+    public String toString() {
+        String result = "";
+        result = stock.stream().map((item) -> item.toString()+"\n").reduce(result, String::concat);
+        return result;
+    }
+
+    public boolean isValidIndex(int index) {
+        return index >=0 && index < stock.size();
+    }
+
+
+    public StockItem getItem(int index) {
+         if (index < 0 || index >= this.stock.size()){
+               return null;
+         }
+         return this.stock.get(index);
+    }
+
+    
+   public StockItem remove(int index) {
+    if(isValidIndex(index)){
+        return this.stock.remove(index);
+    }
+
+    //return null otherwise
+    else{
+        return null;
+    }
+   }
+   
