@@ -1,3 +1,5 @@
+import static java.lang.System.out;
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -8,6 +10,14 @@ import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextPane;
+import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.awt.event.ActionEvent;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeEvent;
 
 public class CandyControl {
 
@@ -79,16 +89,63 @@ public class CandyControl {
 		frmSweetoryInven.getContentPane().add(lblQuantity);
 		
 		JButton btnAdd = new JButton("Add");
+		btnAdd.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				File log = new File("log.txt");
+				String s1=textField.getText();
+				   int a=Integer.parseInt(s1);
+				try {
+					PrintWriter pw = new PrintWriter(new FileWriter(log, true));
+					
+					pw.print(a); pw.print(",");   pw.println(comboBox.getSelectedItem())   ;
+					
+					pw.close();
+				}catch(IOException e) {
+					out.println("error");
+			}
+			}});
 		btnAdd.setBounds(170, 114, 89, 23);
 		frmSweetoryInven.getContentPane().add(btnAdd);
 		
 		JButton btnSubtract = new JButton("Subtract");
+		btnSubtract.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				File log = new File("log.txt");
+				String s1=textField.getText();
+				   int b=Integer.parseInt(s1);
+				try {
+					PrintWriter pw = new PrintWriter(new FileWriter(log, true));
+					
+					pw.print(-b); pw.print(",");   pw.println(comboBox.getSelectedItem())   ;
+					
+					pw.close();
+				}catch(IOException z) {
+					out.println("error");
+			}
+		}});
 		btnSubtract.setBounds(170, 187, 89, 23);
 		frmSweetoryInven.getContentPane().add(btnSubtract);
 		
 		JTextPane textPane = new JTextPane();
+		textPane.addPropertyChangeListener(new PropertyChangeListener() {
+			public void propertyChange(PropertyChangeEvent arg0) {
+				static void filereader(Scanner log);     
+				{         
+				    int i = 0;         
+				    int sum = 0;          
+				    while(i <= 19)         
+				    {       
+				        int nextInt = log.nextInt();          
+
+				        System.out.println(nextInt);             
+				        sum = sum + nextInt;
+				        i++;         
+				    }     
+				}
+			}
+		});
 		textPane.setEditable(false);
-		textPane.setBounds(308, 97, 103, 139);
+		textPane.setBounds(309, 97, 103, 139);
 		frmSweetoryInven.getContentPane().add(textPane);
 	}
 
