@@ -2,7 +2,7 @@
 Inventory App Wireframe
 
 
-IDE: Eclipse 
+Chosen IDE: Eclipse 
 
 
 
