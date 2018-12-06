@@ -1,4 +1,4 @@
-/*Release Candidate version ~~ THIS IS JUST A BETA ~~ */
+/* Release Candidate version ~~ THIS IS JUST A BETA ~~ */
 
 import java.awt.EventQueue;
 
