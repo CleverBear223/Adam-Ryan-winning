@@ -1,3 +1,5 @@
+/*Release Candidate version*/
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
